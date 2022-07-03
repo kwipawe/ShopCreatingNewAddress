@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExcludeFromValidation">
+    <file url="file://$PROJECT_DIR$/../ONL_TEA_W_20_Dzien_6_-_Cucumber_Framework/cucumber_framework/src/test/java/pl/coderslab/googlesearch/GoogleSearch.java" />
+    <file url="file://$PROJECT_DIR$/../ONL_TEA_W_20_Dzien_6_-_Cucumber_Framework/cucumber_framework/src/test/java/pl/coderslab/hotel/HotelPageObjectSteps.java" />
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
