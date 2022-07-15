@@ -14,9 +14,4 @@ public class MyAccountPage {
         driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=addresses");
         driver.findElement(By.cssSelector("a[data-link-action='add-address']")).click();
     }
-
-    public CreateNewAddressPage goToAddressPageWithObject() {
-        goToAddressPage();
-        return new CreateNewAddressPage(driver);
-    }
 }

@@ -60,6 +60,8 @@ public class CreateNewAddressPage {
         countryList.click();
         particularCountryItem.click();
 
+        //to avoid stale DOM exception
+        //https://stackoverflow.com/questions/18225997/stale-element-reference-element-is-not-attached-to-the-page-document
         try {
             phoneTextField.clear();
             phoneTextField.sendKeys(phone);
@@ -92,6 +94,7 @@ public class CreateNewAddressPage {
     }
 
     public void saveAddress() {
+        //to avoid stale DOM exception
         //https://stackoverflow.com/questions/18225997/stale-element-reference-element-is-not-attached-to-the-page-document
         try {
             saveBtn.click();

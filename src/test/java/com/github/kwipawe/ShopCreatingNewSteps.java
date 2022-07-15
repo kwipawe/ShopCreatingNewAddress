@@ -11,12 +11,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class ShopSteps {
+public class ShopCreatingNewSteps {
 
     private WebDriver driver;
-
-    private YourAddressesPage yourAddressesPage;
-
     private String lastName;
     private String firstName;
     private String country;
@@ -34,7 +31,7 @@ public class ShopSteps {
     @When("I go to sign in page")
     public void iGoToSignInPage() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.signInWithObject();
+        mainPage.signIn();
     }
 
     @And("I log in as an user using {string} and {string}")
@@ -46,13 +43,14 @@ public class ShopSteps {
     @And("I go to Add First Address Page")
     public void iGoToAddFirstAddressPage() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
-        myAccountPage.goToAddressPageWithObject();
+        myAccountPage.goToAddressPage();
     }
 
     @And("I put  {string}, {string}, {string}, {string}, {string} and save")
     public void iPutAndSave(String alias, String address, String city, String postalcode, String phone) {
         CreateNewAddressPage createNewAddressPage = new CreateNewAddressPage(driver);
         createNewAddressPage.enterNewAddress(alias, address, postalcode, city, phone);
+        //write data to vars for test later
         firstName = createNewAddressPage.getFirstName();
         lastName = createNewAddressPage.getLastName();
         country = createNewAddressPage.getCountry();
@@ -62,7 +60,7 @@ public class ShopSteps {
     @Then("I see {string}, {string}, {string}, {string}, {string}")
     public void iSee(String alias, String address, String city, String postalcode, String phone) {
         YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
-        yourAddressesPage.getNewestAddress();
+        yourAddressesPage.getNewestAddressId();
         String actualAddress = yourAddressesPage.getFirstAddressAsText();
         String nameSurname = firstName + " " + lastName;
         String expectedAddress = String.join("\n", alias, nameSurname, address,

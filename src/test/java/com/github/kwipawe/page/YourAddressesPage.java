@@ -13,12 +13,8 @@ import java.util.List;
 
 public class YourAddressesPage {
 
-    private WebDriver driver;
     private static String newestAddressId;
-
-    private List<WebElement> addressBox;
-    private WebElement alias;
-
+    private WebDriver driver;
     @FindBy(css = "article.address")
     private List<WebElement> addressWidget;
 
@@ -29,10 +25,10 @@ public class YourAddressesPage {
     }
 
     public String getFirstAddressAsText() {
-        addressBox = driver.findElements(By.xpath("//*[@id='address-" + newestAddressId + "']/div[1]/address"));
+        List<WebElement> addressBox = driver.findElements(By.xpath("//*[@id='address-" + newestAddressId + "']/div[1]/address"));
         WebElement address = addressBox.get(0);
         String[] lines = address.getText().split("\n");
-        alias = driver.findElement(By.cssSelector("article[id='address-" + newestAddressId + "'] h4"));
+        WebElement alias = driver.findElement(By.cssSelector("article[id='address-" + newestAddressId + "'] h4"));
         String aliasText = alias.getText();
         lines = addElementToArray(lines, aliasText);
 
@@ -43,17 +39,17 @@ public class YourAddressesPage {
     private String[] addElementToArray(String[] arr, String element) {
         List<String> list = new ArrayList<>(Arrays.asList(arr));
         list.add(0, element);
-        arr = list.toArray(arr);
-        return arr;
+        return list.toArray(arr);
     }
 
-    public void getNewestAddress() {
+    public void getNewestAddressId() {
+        // by iterating by container with all addresses and getting biggest <oldest> id value
         List<String> idList = new ArrayList<>();
         for (WebElement e : addressWidget) {
             String x = e.getAttribute("data-id-address");
             idList.add(x);
         }
-        Collections.sort(idList, Collections.reverseOrder());
+        idList.sort(Collections.reverseOrder());
         newestAddressId = idList.get(0);
     }
 

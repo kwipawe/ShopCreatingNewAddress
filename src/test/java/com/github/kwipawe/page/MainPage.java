@@ -14,9 +14,4 @@ public class MainPage {
     public void signIn() {
         driver.findElement(By.cssSelector("a[title='Log in to your customer account']")).click();
     }
-
-    public SignInPage signInWithObject() {
-        signIn();
-        return new SignInPage(driver);
-    }
 }
